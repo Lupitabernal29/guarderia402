@@ -53,6 +53,8 @@ class IngredienteController extends Controller
     public function edit(Ingrediente $ingrediente)
     {
         //
+        return view("ingredientes.edit" , compact("ingrediente"));
+        
     }
 
     /**
@@ -61,6 +63,11 @@ class IngredienteController extends Controller
     public function update(Request $request, Ingrediente $ingrediente)
     {
         //
+         $request->validate([
+            'nombre' => 'required',
+        ]);
+        $ingrediente->update($request->all());
+        return redirect()->route("ingredientes.index");
     }
 
     /**

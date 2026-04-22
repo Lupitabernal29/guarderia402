@@ -33,7 +33,12 @@ class FamiliarController extends Controller
     {
         //
          $request->validate([
-            'nombre' => 'required',
+            'id_persona' => 'required',
+            'telefono' => 'required',
+            'dni' => 'required',
+            'direccion' => 'required',
+            'id_parentesco' => 'required',
+            'id_ninio' => 'required',
         ]);
         Familiar::create($request->all());
         return redirect()->route("familiares.index");
@@ -45,6 +50,7 @@ class FamiliarController extends Controller
     public function show(Familiar $familiar)
     {
         //
+        
     }
 
     /**
@@ -53,6 +59,7 @@ class FamiliarController extends Controller
     public function edit(Familiar $familiar)
     {
         //
+        return view("familiares.edit" , compact("familiar"));
     }
 
     /**
@@ -61,6 +68,18 @@ class FamiliarController extends Controller
     public function update(Request $request, Familiar $familiar)
     {
         //
+        $request->validate([
+        'id_persona' => 'required',
+        'telefono' => 'required',
+        'dni' => 'required',
+        'direccion' => 'required',
+        'id_parentesco' => 'required',
+        'id_ninio' => 'required',
+    ]);
+
+    $familiar->update($request->all());
+
+    return redirect()->route("familiares.index");
     }
 
     /**

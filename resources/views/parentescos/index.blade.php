@@ -33,12 +33,21 @@
                                     <td class="fw-bold">{{$loop->index+1}}</td>
                                     <td>{{$parentesco->nombre}}</td> 
                                     <td>
-                                        <form action="{{route('parentescos.destroy',$parentesco)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-
-                                        </form>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <a href="{{ route('parentescos.edit', $parentesco) }}" 
+                                            class="btn btn-outline-primary btn-sm me-2" 
+                                            title="Editar">
+                                                <i class="bi bi-pencil-square"></i> Editar
+                                            </a>
+                                            
+                                            <form action="{{ route('parentescos.destroy', $parentesco) }}" method="POST" class="m-0">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" >
+                                                    <i class="bi bi-trash"></i> Eliminar
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach

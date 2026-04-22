@@ -9,7 +9,7 @@ class Familiar extends Model
 
 {
     //
-     use softDeletes;
+     use SoftDeletes;
      protected $table="familiares";
     protected $primaryKey = 'id_familiar';
     public $timestamps=false;
@@ -22,5 +22,13 @@ class Familiar extends Model
     'id_parentesco',
     'id_ninio'];
     //created_at, updated_at, deleted_at (timestamps) pueden llevar valores null
+  public function ninio()
+    {
+        return $this->belongsTo(Ninio::class, 'id_ninio');
+    }
 
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'id_persona');
+    }
 }

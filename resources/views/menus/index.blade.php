@@ -33,19 +33,28 @@
 
                             @foreach($menus as $menu)
                                 <tr>
-                                    <td class="fw-bold">{{$loop->index+1}}</td>
-                                    <td>{{$menu->id_plato}}</td>
-                                    <td>{{$menu->id_ingrediente}}</td>
+                                    <td class="fw-bold">{{ $loop->iteration }}</td>
+                                    <td>{{ $menu->id_plato }}</td>
+                                    <td>{{ $menu->id_ingrediente }}</td>
                                     <td>
-                                        <form action="{{ route('menus.destroy', $menu) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-
-                                        </form>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <a href="{{ route('menus.edit', $menu) }}" 
+                                            class="btn btn-outline-primary btn-sm me-2" 
+                                            title="Editar">
+                                                <i class="bi bi-pencil-square"></i> Editar
+                                            </a>
+                                            
+                                            <form action="{{ route('menus.destroy', $menu) }}" method="POST" class="m-0">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Eliminar?')">
+                                                    <i class="bi bi-trash"></i> Eliminar
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
-                                @endforeach
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

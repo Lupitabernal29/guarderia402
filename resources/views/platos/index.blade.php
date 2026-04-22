@@ -37,15 +37,22 @@
                                     <td>{{$plato->nombre}}</td>
                                     <td>{{$plato->precio}}</td>
                                     <td>
-                                        <form action="{{route("platos.destroy",$plato)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-
-                                        </form>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <a href="{{ route('platos.edit', $plato) }}" 
+                                            class="btn btn-outline-primary btn-sm me-2" 
+                                            title="Editar">
+                                                <i class="bi bi-pencil-square"></i> Editar
+                                            </a>
+                                            
+                                            <form action="{{ route('platos.destroy', $plato) }}" method="POST" class="m-0">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" >
+                                                    <i class="bi bi-trash"></i> Eliminar
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
-
-                                
                                 </tr>
                                 @endforeach
                             </tbody>

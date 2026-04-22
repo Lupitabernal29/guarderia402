@@ -45,12 +45,19 @@
                                     <td>{{$familiar->id_parentesco}}</td>
                                     <td>{{$familiar->id_ninio}}</td>
                     
-                                    <td>
-                                        <form action="{{route("familiares.destroy",$familiar)}}" method="post">
+                                    <td class="d-flex align-items-center">
+                                        <a href="{{ route('familiares.edit', $familiar) }}" 
+                                        class="btn btn-outline-primary btn-sm me-2" 
+                                        title="Editar">
+                                            <i class="bi bi-pencil-square"></i> Editar
+                                        </a>
+
+                                        <form action="{{ route('familiares.destroy', $familiar) }}" method="POST" class="m-0">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                <i class="bi bi-trash"></i> Eliminar
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>

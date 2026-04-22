@@ -58,6 +58,10 @@ class PersonaController extends Controller
     public function edit(Persona $persona)
     {
         //
+
+      return view("personas.edit" , compact("persona"));
+
+
     }
 
     /**
@@ -66,6 +70,15 @@ class PersonaController extends Controller
     public function update(Request $request, Persona $persona)
     {
         //
+       $request->validate([
+            'nombre' => 'required',
+            'apellido_paterno' => 'required',
+            'apellido_materno' => 'required',
+            'fecha_nacimiento' => 'required',
+        ]);
+        $persona->update($request->all());
+        return redirect()->route("personas.index");
+
     }
 
     /**

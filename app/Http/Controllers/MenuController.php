@@ -60,6 +60,7 @@ class MenuController extends Controller
     public function edit(Menu $menu)
     {
         //
+        return view("menus.edit" , compact("menu"));
     }
 
     /**
@@ -68,6 +69,14 @@ class MenuController extends Controller
     public function update(Request $request, Menu $menu)
     {
         //
+         $request->validate([
+            'id_plato' => 'required',
+            'id_ingrediente' => 'required',
+           
+        ]);
+        
+        $menu->update($request->all());
+        return redirect()->route("menus.index");
     }
 
     /**

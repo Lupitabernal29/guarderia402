@@ -51,6 +51,8 @@ class NinioController extends Controller
     public function show(Ninio $ninio)
     {
         //
+        
+    
     }
 
     /**
@@ -59,6 +61,7 @@ class NinioController extends Controller
     public function edit(Ninio $ninio)
     {
         //
+          return view("ninios.edit" , compact("ninio"));
     }
 
     /**
@@ -67,6 +70,16 @@ class NinioController extends Controller
     public function update(Request $request, Ninio $ninio)
     {
         //
+        $request->validate([
+            'matricula' => 'required',
+            'id_persona' => 'required',
+            'id_centro' => 'required',
+            'fecha_ingreso' => 'required',
+        ]);
+         $ninio->update($request->all());
+        return redirect()->route("ninios.index");
+       
+
     }
 
     /**

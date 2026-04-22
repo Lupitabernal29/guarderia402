@@ -56,6 +56,7 @@ class ParentescoController extends Controller
     public function edit(Parentesco $parentesco)
     {
         //
+        return view("parentescos.edit" , compact("parentesco"));
     }
 
     /**
@@ -64,6 +65,13 @@ class ParentescoController extends Controller
     public function update(Request $request, Parentesco $parentesco)
     {
         //
+        $request->validate([
+            'nombre' => 'required',
+            
+        ]);
+         $parentesco->update($request->all());
+        return redirect()->route("parentescos.index");
+       
 
     }
 

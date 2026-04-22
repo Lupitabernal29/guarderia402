@@ -45,12 +45,21 @@
                                         </span>
                                     </td>
                                     <td>
-                                        <form action="{{route("personas.destroy",$persona)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-
-                                        </form>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <a href="{{ route('personas.edit', $persona) }}" 
+                                            class="btn btn-outline-primary btn-sm me-2" 
+                                            title="Editar">
+                                                <i class="bi bi-pencil-square"></i> Editar
+                                            </a>
+                                            
+                                            <form action="{{ route('personas.destroy', $persona) }}" method="POST" class="m-0">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" >
+                                                    <i class="bi bi-trash"></i> Eliminar
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach

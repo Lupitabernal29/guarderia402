@@ -20,4 +20,8 @@ class Persona extends Model
         "apellido_materno"
     ];
     //created_at, updated_at, deleted_at (timestamps) pueden llevar valores null
+    public function familiares()
+    {
+        return $this->hasMany(Familiar::class, 'id_persona');
+    }
 }

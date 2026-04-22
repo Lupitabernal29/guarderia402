@@ -50,7 +50,7 @@
 
                         <div class="col-md-4 mb-3">
                                 <label for="id_parentesco" class="form-label">Parentesco</label>
-                                <input type="text" class="form-control @error('id_parentesco') is-invalid @enderror" id="id_parentezco" name="id_parentezco" placeholder="Eje.1" required>
+                                <input type="text" class="form-control @error('id_parentesco') is-invalid @enderror" id="id_parentesco" name="id_parentesco" placeholder="Eje.1" required>
                                  @error('id_parentesco')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror

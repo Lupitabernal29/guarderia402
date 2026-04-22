@@ -20,10 +20,12 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('personas',App\Http\Controllers\PersonaController::class);
-Route::resource('familiares',App\Http\Controllers\FamiliarController::class);
+Route::resource('familiares', App\Http\Controllers\FamiliarController::class)->parameters(['familiares' => 'familiar']);
 Route::resource('platos',App\Http\Controllers\PlatoController::class);
 Route::resource('centros',App\Http\Controllers\CentroController::class);
 Route::resource('ingredientes',App\Http\Controllers\IngredienteController::class);
 Route::resource('menus',App\Http\Controllers\MenuController::class);
 Route::resource('ninios',App\Http\Controllers\NinioController::class);
 Route::resource('parentescos',App\Http\Controllers\ParentescoController::class);
+Route::resource('abonos', App\Http\Controllers\AbonoController::class);
+Route::resource('registro_cuentas', App\Http\Controllers\RegistroCuentaController::class);
