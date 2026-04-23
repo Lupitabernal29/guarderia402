@@ -18,9 +18,6 @@ class Abono extends Model
         "fecha_abono",
         "id_registrocuenta"
     ];
-
-    // ESTA ES LA FUNCIÓN QUE LARAVEL NO ENCUENTRA:
-    // Asegúrate de que se llame registroCuenta (con C mayúscula)
     public function registroCuenta()
     {
         return $this->belongsTo(RegistroCuenta::class, 'id_registrocuenta');
